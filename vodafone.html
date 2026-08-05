@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Free Neet — باقات فودافون</title>
+  <meta name="description" content="باقات فودافون فليكس فاميلي" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Watermark -->
+  <div class="watermark" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E50000"/>
+          <stop offset="50%" stop-color="#8200DC"/>
+          <stop offset="100%" stop-color="#00B43C"/>
+        </linearGradient>
+        <linearGradient id="wm-ring" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#E50000"/>
+          <stop offset="50%" stop-color="#FF6060"/>
+          <stop offset="100%" stop-color="#8200DC"/>
+        </linearGradient>
+      </defs>
+      <circle cx="100" cy="100" r="85" stroke="url(#wm-ring)" stroke-width="4"/>
+      <circle cx="100" cy="100" r="70" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-dasharray="6 6"/>
+      <path d="M100 45 L145 72 L145 128 L100 155 L55 128 L55 72 Z" fill="url(#wm-grad)" opacity="0.15"/>
+      <g transform="translate(60,75)">
+        <path d="M15 60 L15 0 L45 0 L45 12 L28 12 L28 25 L40 25 L40 37 L28 37 L28 60 Z" fill="url(#wm-grad)"/>
+        <path d="M50 60 L50 0 L63 0 L80 40 L80 0 L92 0 L92 60 L79 60 L62 20 L62 60 Z" fill="url(#wm-grad)"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Ambient glows (red theme) -->
+  <div class="glow" style="top:-10%;left:-10%;width:55vw;height:55vw;background:#E50000;opacity:0.07;filter:blur(120px);" aria-hidden="true"></div>
+  <div class="glow" style="bottom:-10%;right:-10%;width:40vw;height:40vw;background:#E50000;opacity:0.05;filter:blur(100px);" aria-hidden="true"></div>
+
+  <!-- ═══ Fixed Home Button ═══ -->
+  <a href="index.html" class="fixed-home-btn animate-fade-in">
+    <i class="fa-solid fa-house"></i>
+    🏠 الرجوع للصفحة الرئيسية
+  </a>
+
+  <!-- PAGE CONTENT -->
+  <div class="page active">
+    <div class="container" style="padding-top:5.5rem;">
+
+      <!-- Header -->
+      <header class="header animate-fade-in">
+        <div
+          class="vf-emblem animate-pulse-glow"
+          style="
+            background: linear-gradient(135deg,rgba(229,0,0,0.25),rgba(229,0,0,0.08));
+            border: 2px solid rgba(229,0,0,0.5);
+            box-shadow: 0 0 40px rgba(229,0,0,0.3);
+          "
+        >
+          <span style="font-size:2rem;">🔴</span>
+        </div>
+        <h1 class="site-title">فليكس فاميلي</h1>
+        <p class="site-subtitle">اختر الباقة المناسبة لك</p>
+      </header>
+
+      <!-- Package cards -->
+      <main class="pkg-list">
+
+        <div class="pkg-card glass-card animate-slide-up delay-100">
+          <div class="pkg-info">
+            <span class="pkg-name">2600 فليكس</span>
+            <span class="pkg-price">50 جنيه</span>
+          </div>
+          <button class="order-btn glass-btn" onclick="openModal('2600 فليكس','50 جنيه')">
+            اطلب الآن
+          </button>
+        </div>
+
+        <div class="pkg-card glass-card animate-slide-up delay-200">
+          <div class="pkg-info">
+            <span class="pkg-name">5200 فليكس</span>
+            <span class="pkg-price">90 جنيه</span>
+          </div>
+          <button class="order-btn glass-btn" onclick="openModal('5200 فليكس','90 جنيه')">
+            اطلب الآن
+          </button>
+        </div>
+
+        <div class="pkg-card glass-card animate-slide-up delay-300">
+          <div class="pkg-info">
+            <span class="pkg-name">10400 فليكس</span>
+            <span class="pkg-price">180 جنيه</span>
+          </div>
+          <button class="order-btn glass-btn" onclick="openModal('10400 فليكس','180 جنيه')">
+            اطلب الآن
+          </button>
+        </div>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer animate-fade-in delay-400">
+        <p>© Free Neet 2026</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- ORDER MODAL -->
+  <div id="order-modal" class="modal-overlay" onclick="handleOverlayClick(event)" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-box glass-card">
+
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-title" class="modal-title">تفاصيل الطلب</h2>
+          <p class="modal-pkg-info">
+            <span id="modal-pkg-label"></span> — <span id="modal-pkg-price" style="color:#E50000;"></span>
+          </p>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="إغلاق">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="order-form" class="order-form" onsubmit="submitOrder(event)" novalidate>
+
+        <div class="field-group">
+          <label class="field-label">رقم الهاتف <span class="required">*</span></label>
+          <input
+            id="input-phone"
+            type="tel"
+            inputmode="numeric"
+            placeholder="01xxxxxxxxx"
+            class="field-input"
+            autocomplete="tel"
+          />
+          <span id="err-phone" class="field-error"></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">هل سبق وتم عمل فليكس فاميلي لهذا الرقم؟ <span class="required">*</span></label>
+          <div class="toggle-row" role="radiogroup">
+            <button type="button" class="toggle-btn" data-group="hadFlexi" data-value="نعم" onclick="selectToggle(this)">نعم</button>
+            <button type="button" class="toggle-btn" data-group="hadFlexi" data-value="لا"  onclick="selectToggle(this)">لا</button>
+          </div>
+          <span id="err-hadFlexi" class="field-error"></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">هل تعرف باسورد تطبيق My Vodafone؟ <span class="required">*</span></label>
+          <div class="toggle-row" role="radiogroup">
+            <button type="button" class="toggle-btn" data-group="knowsPass" data-value="نعم" onclick="selectToggle(this)">نعم</button>
+            <button type="button" class="toggle-btn" data-group="knowsPass" data-value="لا"  onclick="selectToggle(this)">لا</button>
+          </div>
+          <span id="err-knowsPass" class="field-error"></span>
+        </div>
+
+        <div id="password-field" class="field-group hidden animate-fade-in">
+          <label class="field-label" for="input-password">اكتب باسورد تطبيق My Vodafone</label>
+          <input
+            id="input-password"
+            type="text"
+            placeholder="الباسورد"
+            class="field-input"
+            autocomplete="off"
+          />
+        </div>
+
+        <button type="submit" class="submit-btn glass-btn">
+          <i class="fa-brands fa-whatsapp" style="color:#25D366;font-size:1.2rem;"></i>
+          إرسال الطلب عبر واتساب
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

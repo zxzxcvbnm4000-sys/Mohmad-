@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WE Packages</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{font-family:Arial;background:#111;color:#fff;margin:0;padding:20px}
+.header{text-align:center}.notice{color:#8fd}
+.card{background:#1f1f1f;border-radius:16px;padding:16px;margin:12px 0;border:1px solid #444}
+.btn{display:inline-block;background:#6a5acd;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;cursor:pointer}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6)}
+#modal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#222;padding:20px;border-radius:14px;width:90%;max-width:340px}
+input{width:100%;padding:10px;margin:10px 0}
+</style></head><body>
+<a class="btn" href="index.html">🏠 الرجوع للصفحة الرئيسية</a>
+<div class="header"><h1>باقات WE</h1><div class="notice">التفعيل يوم 1 ويوم 16<br>الحجز مضبوط</div></div>
+<script>
+const packs=[
+["10 جيجا + 1000 دقيقة","200 جنيه"],
+["20 جيجا + 1000 دقيقة","280 جنيه"],
+["30 جيجا + 1500 دقيقة","350 جنيه"],
+["40 جيجا + 2000 دقيقة","435 جنيه"],
+["50 جيجا + 2000 دقيقة","520 جنيه"],
+["60 جيجا + 2000 دقيقة","580 جنيه"],
+["100 جيجا + 2000 دقيقة","930 جنيه"]];
+document.write(packs.map(p=>`<div class='card'><h3>${p[0]}</h3><p>${p[1]}</p><button class='btn' onclick="order('${p[0]}','${p[1]}')">اطلب الآن</button></div>`).join(""));
+</script>
+<div id="overlay" onclick="closeM()"></div>
+<div id="modal"><h3>إتمام الطلب</h3><input id="phone" placeholder="رقم الهاتف"><button class="btn" onclick="send()">إرسال الطلب</button> <button class="btn" onclick="closeM()">إلغاء</button></div>
+<script>
+let current="";
+function order(n,p){current=n+" - "+p;overlay.style.display=modal.style.display="block";}
+function closeM(){overlay.style.display=modal.style.display="none";}
+function send(){let ph=document.getElementById('phone').value;
+location.href='https://wa.me/?text='+encodeURIComponent('WE\nالباقة: '+current+'\nالرقم: '+ph);}
+</script></body></html>
